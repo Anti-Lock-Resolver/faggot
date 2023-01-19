@@ -61,7 +61,7 @@ getgenv().Aiming = {
 local Aiming = getgenv().Aiming
 
 -- // Show FOV
-local circle = Drawingnew("Circle")
+local circle = Drawingnew("Square")
 circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
@@ -407,11 +407,6 @@ Heartbeat:Connect(function()
 end)
 
 return Aiming
-
--- // Examples // --
-
---// Namecall Version // --
-
 --[[
 -- // Load Aiming Module
 local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Universal/Aiming/Module.lua"))()
@@ -437,30 +432,3 @@ __namecall = hookmetamethod(game, "__namecall", function(...)
     -- // Return
     return __namecall(...)
 end)
-]]--
-
--- // Index Version // --
-
---[[
--- // Load Aiming Module
-local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Universal/Aiming/Module.lua"))()
-
--- // Hook
-local __index
-__index = hookmetamethod(game, "__index", function(t, k)
-    -- // Check if it trying to get our mouse's hit or target
-    if (t:IsA("Mouse") and (k == "Hit" or k == "Target")) then
-        -- // If we can use the silent aim
-        if (Aiming.Check()) then
-            -- // Vars
-            local TargetPart = Aiming.SelectedPart
-
-            -- // Return modded val
-            return (k == "Hit" and TargetPart.CFrame or TargetPart)
-        end
-    end
-
-    -- // Return
-    return __index(t, k)
-end)
-]]--

@@ -61,7 +61,7 @@ getgenv().Aiming = {
 local Aiming = getgenv().Aiming
 
 -- // Show FOV
-local circle = Drawingnew("Square")
+local circle = Drawingnew("Circle")
 circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
